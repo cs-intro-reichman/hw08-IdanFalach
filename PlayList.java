@@ -141,11 +141,16 @@ class PlayList {
             return;
         }
 
-        for (int j = i; j < size; j++) {
-            tracks[j] = tracks[j + 1];
-        }
+        if (i == size - 1) {
+            removeLast();
+        } else {
+            size--;
+            for (int j = i; j < size; j++) {
+                tracks[j] = tracks[j + 1];
+            }
 
-        size--;
+            tracks[size] = null; // removing duplicate track at the end
+        }
     }
 
     /**
